@@ -30,6 +30,9 @@ RUN apk add --update --no-cache \
     php7-simplexml \
     php7-xdebug \
     php7-zip \
+    php7-pear \
+    php7-dev \
+    php7-redis \
     make \
     curl
 
@@ -46,5 +49,5 @@ COPY symfony.pool.conf /etc/php7/php-fpm.d/
 
 CMD ["php-fpm7", "-F"]
 
-WORKDIR /var/www
+WORKDIR /var/www/symfony
 EXPOSE 9001

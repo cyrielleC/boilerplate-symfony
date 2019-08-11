@@ -13,11 +13,11 @@ redis:
         ports:
         - 6379:6379
 php:
-    build: ./php-fpm
+    build: docker/php-fpm
     ports:
         - "9000:9001"
     volumes:
-        - .:/var/www:cached
+        - ./symfony:/var/www/symfony:cached
         - ./logs/symfony:/var/www/symfony/var/log:cached
     links:
         - db
@@ -25,7 +25,7 @@ php:
     extra_hosts:
         - "docker-host.localhost:127.0.0.1"
 nginx:
-    build: ./nginx
+    build: docker/nginx
     ports:
         - "80:80"
     links:
